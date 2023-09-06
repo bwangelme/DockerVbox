@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
   config.disksize.size = "50GB"
 
-  $num_instances = 3
+  $num_instances = 1
   (1..$num_instances).each do |i|
     config.vm.define "vbox#{i}" do |node|
       node.vm.box = "ubuntu/jammy"
