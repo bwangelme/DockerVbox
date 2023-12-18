@@ -18,15 +18,15 @@ Vagrant.configure("2") do |config|
     config.vm.define "vbox#{i}" do |node|
       node.vm.box = "ubuntu/jammy"
       node.vm.hostname = "vbox#{i}"
-      # Ranges: 192.168.56.0/21
+      # Ranges: 192.168.58.0/21
       ip = "192.168.58.#{i+10}"
       node.vm.network "private_network", ip: ip
       node.vm.provider "virtualbox" do |vb|
-        vb.memory = "4096"
-        vb.cpus = 2
+        vb.memory = "8192"
+        vb.cpus = 8
         vb.name = "vbox#{i}"
       end
-      # node.vm.provision "shell", path: "install.sh"
+      node.vm.provision "shell", path: "install.sh"
     end
   end
 end
